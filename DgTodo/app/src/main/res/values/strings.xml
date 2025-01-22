@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DgTodo</string>
+    <string name="shown_name">당근 할일 정리</string>
 </resources>

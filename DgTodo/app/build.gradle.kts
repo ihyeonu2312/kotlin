@@ -1,8 +1,7 @@
-import org.jetbrains.kotlin.gradle.utils.IMPLEMENTATION
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-kapt") // kapt 플러그인 추가
 }
 
 android {
@@ -45,13 +44,10 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    // https://mvnrepository.com/artifact/androidx.room/room-common
-    implementation("androidx.room:room-common:2.6.1")
-    // https://mvnrepository.com/artifact/androidx.room/room-runtime
-    implementation("androidx.room:room-runtime:2.6.1")
-    // https://mvnrepository.com/artifact/androidx.room/room-compiler
-    implementation("androidx.room:room-compiler:2.6.1")
-    // https://mvnrepository.com/artifact/androidx.room/room-ktx
+    implementation("androidx.room:room-runtime:2.6.1") // Room 런타임 라이브러리
+    kapt("androidx.room:room-compiler:2.6.1") // Annotation Processor
+
+    // Room with Kotlin
     implementation("androidx.room:room-ktx:2.6.1")
 
 

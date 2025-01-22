@@ -8,5 +8,5 @@ data class Todo (
     @PrimaryKey(autoGenerate = true)
     val num: Int = 0,
     val title: String,
-    val completed: Boolean
+    val completed: Boolean = false
 )

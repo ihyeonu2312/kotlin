@@ -2,6 +2,7 @@ package site.unoeyhi.dgtodo.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -55,12 +56,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == ADD_TODO_REQUEST_CODE && resultCode == RESULT_OK){
-
+        if (requestCode == ADD_TODO_REQUEST_CODE && resultCode == RESULT_OK) {
+            Log.d("MainActivity", "새로운 할 일 추가됨, 리스트 갱신")
+            loadTodos() // 데이터 갱신
         }
-
     }
-
     companion object {
         private const val ADD_TODO_REQUEST_CODE = 1001
     }

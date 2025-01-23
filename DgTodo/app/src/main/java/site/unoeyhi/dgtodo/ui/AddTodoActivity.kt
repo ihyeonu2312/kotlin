@@ -28,17 +28,22 @@ class AddTodoActivity:AppCompatActivity() {
             if(title.isNotBlank()) {
                 lifecycleScope.launch {
                     val newTodo = Todo(title = title)
-                    Log.d("todo 확인", "onCreate: 추가")
 
-                    todoDatabase.todoDao().insert(newTodo)
+                    try {
+                        todoDatabase.todoDao().insert(newTodo)
 
-                    // activity move
-                    setResult(RESULT_OK)
-                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-                    finish()
+                        Log.d("AddTodoActivity", "할 일 추가 완료: $title")
+
+
+                        // activity move
+                        setResult(RESULT_OK)
+                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+                        finish()
+                    } catch (e: Exception) {
+                        Log.e("AddTodoActivity", "할 일 추가 중 오류 발생", e)
+                    }
                 }
-            }
-            else {
+            } else {
                 inputTitle.error = "타이틀 비어있음"
             }
         }
